@@ -4,7 +4,7 @@
 ### Description:
 Given the 9x9 sudoku grid with numbers and 'X', which stands for empty cells
 
-Sudoku is a great exercise for practicing algorithm. To solve this, we need to understand the rules of 9x9 sudoku:
+Sudoku is a great exercise for practicing backtracking algorithm. To solve this, we need to understand the rules of 9x9 sudoku:
 1. Every number can only be used once in the same column and row.
 2. 9x9 consists of 9 3x3 grids, which contain exactly 9 numbers (from 1 to 9) and no duplicate.
 
