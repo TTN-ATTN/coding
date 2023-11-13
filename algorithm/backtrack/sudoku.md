@@ -1,12 +1,8 @@
 # PROBLEM: SUDOKU
 ## Approach: [Backtracking algorithm](https://www.geeksforgeeks.org/backtracking-algorithms/)
+## Required knowlege: [Recursion](https://www.geeksforgeeks.org/introduction-to-recursion-data-structure-and-algorithm-tutorials/), [Brute Force](https://www.geeksforgeeks.org/brute-force-approach-and-its-pros-and-cons/)
 ### Description:
 Given the 9x9 sudoku grid with numbers and 'X', which stands for empty cells
-
-Input:                
-
-Output:
-
 
 Sudoku is a great exercise for practicing algorithm. To solve this, we need to understand the rules of 9x9 sudoku:
 1. Every number can only be used once in the same column and row.
