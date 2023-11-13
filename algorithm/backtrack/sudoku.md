@@ -16,7 +16,6 @@ Let's do some set up first before solving the problem:
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
 
 int main()
 {
@@ -110,6 +109,76 @@ void Solve(){
     }
   }
 }
-
-I hope this will be helpful, happy coding!
 ```
+
+Put everything together, we have the whole program:
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int grid[9][9] = {0}; // 0 stands for empty cells
+bool cCol[9][10]={false}; // check appearance in columns
+bool cRow[9][10]={false}; // check appearance in rows
+bool cSq[3][3][10]={false}; // check appearance in 3x3 grids
+
+void Input()
+{   
+    char c;
+    for(int i = 0; i < 9; i++)
+    {
+        for(int j = 0; j < 9; j++)
+        {
+            cin >> c;
+            if(c!='X')
+            {   
+                int num = c - '0';
+                grid[i][j] = num;
+                cRow[i][num] = cCol[j][num] = cSq[i/3][j/3][num] = true;
+            }
+        }
+    }
+}
+
+bool Valid(int row, int col , int num)
+{
+  return !(cSq[row/3][col/3][num] || cRow[row][num] || cCol[col][num]);
+}
+
+bool Try(int row, int col)
+{
+    if(row > 8) return true;
+    if(col > 8) return Try(row + 1, 0);
+    if(s[row][col] != 0) return Try(row, col + 1);
+    for(int i = 1; i <= 9; i++)
+    {
+        if(Check(row, col, i))
+        {
+            s[row][col] = i;
+            cSq[row/3][col/3][i] = cRow[row][i] = cCol[col][i] = true;
+            if(Try(row, col + 1))
+                return true;
+            s[row][col] = 0;
+            cSq[row/3][col/3][i] = cRow[row][i] = cCol[col][i] = false;
+        }
+    }
+    return false;
+}
+
+void Solve(){
+  if(Try(0,0)){
+    for(int i = 0; i < 9; i++){
+      for(int j = 0; j < 9; j++) cout << grid[i][j];
+      cout << '\n';
+    }
+  }
+}
+
+int main()
+{
+  Input();
+  Solve();
+  return 0;
+}
+
+```
+I hope this will be helpful, happy coding!
