@@ -1,6 +1,6 @@
 # PROBLEM: SUDOKU
 ## Approach: [Backtracking algorithm](https://www.geeksforgeeks.org/backtracking-algorithms/)
-## Required knowlege: [Recursion](https://www.geeksforgeeks.org/introduction-to-recursion-data-structure-and-algorithm-tutorials/), [Brute Force](https://www.geeksforgeeks.org/brute-force-approach-and-its-pros-and-cons/)
+## Required knowledge: [Recursion](https://www.geeksforgeeks.org/introduction-to-recursion-data-structure-and-algorithm-tutorials/), [Brute Force](https://www.geeksforgeeks.org/brute-force-approach-and-its-pros-and-cons/)
 ### Description:
 Given the 9x9 sudoku grid with numbers and 'X', which stands for empty cells
 
