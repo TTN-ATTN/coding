@@ -59,5 +59,19 @@ void Input()
 
 After this, we need the algorithm for Solve() function. Let's break down the problem:
 - Placing the numbers into cells
-- Checking the conditions
+- Checking if the cells are valid
 
+The check conditions are quite straightforward, so we will work with them first.
+```cpp
+bool Valid(int row, int col , int num)
+{
+  return !(cSq[row/3][col/3][num] || cRow[row][num] || cCol[col][num]);
+}
+```
+Another way:
+```cpp
+bool Valid(int row, int col , int num)
+{
+  return !(cSq[row/3][col/3][num] || cRow[row][num] || cCol[col][num]);
+}
+```
