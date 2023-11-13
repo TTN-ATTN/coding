@@ -49,7 +49,7 @@ void Input()
             if(c!='X')
             {   
                 int num = c - '0';
-                s[i][j] = num;
+                grid[i][j] = num;
                 cRow[i][num] = cCol[j][num] = cSq[i/3][j/3][num] = true;
             }
         }
@@ -69,9 +69,47 @@ bool Valid(int row, int col , int num)
 }
 ```
 Another way:
+
 ```cpp
 bool Valid(int row, int col , int num)
 {
-  return !(cSq[row/3][col/3][num] || cRow[row][num] || cCol[col][num]);
+  return (!cRow[row][num] && !cCol[col][num] && !cSq[row/3][col/3][num]);
 }
+```
+Now comes to the hard part, the backtracking algorithm in Solve() function. Here is my idea of solving the sudoku:
+> Tries to fill the cells of the Sudoku grid recursively. If a cell already contains a number, it moves to the next cell. If a cell is empty, it tries to fill it with a number from 1 to 9 that does not violate the Sudoku rules. If no number can be placed in the current cell, it backtracks to the previous cell and tries the next number. If the loop reach the end of the grid, print the solved grid.
+
+Based on that idea, my function is:
+```cpp
+
+bool Try(int row, int col)
+{
+    if(row > 8) return true;
+    if(col > 8) return Try(row + 1, 0);
+    if(s[row][col] != 0) return Try(row, col + 1);
+    for(int i = 1; i <= 9; i++)
+    {
+        if(Check(row, col, i))
+        {
+            s[row][col] = i;
+            cSq[row/3][col/3][i] = cRow[row][i] = cCol[col][i] = true;
+            if(Try(row, col + 1))
+                return true;
+            s[row][col] = 0;
+            cSq[row/3][col/3][i] = cRow[row][i] = cCol[col][i] = false;
+        }
+    }
+    return false;
+}
+
+void Solve(){
+  if(Try(0,0)){
+    for(int i = 0; i < 9; i++){
+      for(int j = 0; j < 9; j++) cout << grid[i][j];
+      cout << '\n';
+    }
+  }
+}
+
+I hope this will be helpful, happy coding!
 ```
