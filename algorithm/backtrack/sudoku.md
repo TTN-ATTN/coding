@@ -85,16 +85,16 @@ bool Try(int row, int col)
 {
     if(row > 8) return true;
     if(col > 8) return Try(row + 1, 0);
-    if(s[row][col] != 0) return Try(row, col + 1);
+    if(grid[row][col] != 0) return Try(row, col + 1);
     for(int i = 1; i <= 9; i++)
     {
-        if(Check(row, col, i))
+        if(Valid(row, col, i))
         {
-            s[row][col] = i;
+            grid[row][col] = i;
             cSq[row/3][col/3][i] = cRow[row][i] = cCol[col][i] = true;
             if(Try(row, col + 1))
                 return true;
-            s[row][col] = 0;
+            grid[row][col] = 0;
             cSq[row/3][col/3][i] = cRow[row][i] = cCol[col][i] = false;
         }
     }
@@ -148,16 +148,16 @@ bool Try(int row, int col)
 {
     if(row > 8) return true;
     if(col > 8) return Try(row + 1, 0);
-    if(s[row][col] != 0) return Try(row, col + 1);
+    if(grid[row][col] != 0) return Try(row, col + 1);
     for(int i = 1; i <= 9; i++)
     {
-        if(Check(row, col, i))
+        if(Valid(row, col, i))
         {
-            s[row][col] = i;
+            grid[row][col] = i;
             cSq[row/3][col/3][i] = cRow[row][i] = cCol[col][i] = true;
             if(Try(row, col + 1))
                 return true;
-            s[row][col] = 0;
+            grid[row][col] = 0;
             cSq[row/3][col/3][i] = cRow[row][i] = cCol[col][i] = false;
         }
     }
